@@ -70,3 +70,16 @@ setting the environment variable `_NGINX_VERSION` (such as
 From Docker Compose, you can use the following::
 
     docker-compose run -e _NGINX_VERSION=1.13.3 nginx-dynamic-modules-centos-7
+
+Testing locally
+---------------
+
+If you want to test the modules, then launch a Docker container with the
+appropriate OS, install the built packages and test away::
+
+    docker-compose run -p "8080:80" centos-7 bash
+    yum install /app/build/centos-7/RPMS/x86_64/*.rpm
+
+Unless you're just performing basic tests without hitting nginx, you'll need
+to map ports, which is what the ``-p`` flag is doing, mapping your host port
+``8080`` to ``80`` inside the container.
