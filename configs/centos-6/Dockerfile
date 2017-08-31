@@ -4,12 +4,17 @@ MAINTAINER "JCU eResearch Centre" <eresearch.nospam@jcu.edu.au>
 # Add official nginx repo
 COPY nginx.repo /etc/yum.repos.d/
 
+# Add JCU eResearch repo
+ADD https://www.hpc.jcu.edu.au/repos/jcu_eresearch/centos-6/eresearch.repo /etc/yum.repos.d/eresearch.repo
+
 # Install required packages for building with nginx pkg-oss
 # git is needed to clone our tools, and sudo/wget are undefined dependencies
+# sregex-devel is needed for replace-filter-nginx-module
 # openldap-devel is for the nginx LDAP module
 RUN yum install -y \
-  openldap-devel \
   git \
+  openldap-devel \
+  sregex-devel \
   sudo \
   wget
 

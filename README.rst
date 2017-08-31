@@ -37,6 +37,9 @@ nginx-auth-ldap
 nginx_ajp_module
     Updated for dynamic module compatibility.
 
+replace-filter-nginx-module
+    ngx_replace_filter - Streaming regular expression replacement in response
+    bodies.
 
 Building packages
 -----------------
