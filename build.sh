@@ -43,7 +43,7 @@ _build_dynamic_module_git() {
 
 # Build various add-on modules for nginx
 _build_dynamic_module_git "headersmore" "https://github.com/openresty/headers-more-nginx-module" "v0.32"
-_build_dynamic_module_git "fancyindex" "https://github.com/aperezdc/ngx-fancyindex.git" "v0.4.1"
+_build_dynamic_module_git "fancyindex" "https://github.com/aperezdc/ngx-fancyindex.git" "v0.4.2"
 _build_dynamic_module_git "ajp" "https://github.com/jcu-eresearch/nginx_ajp_module.git"
 _build_dynamic_module_git "shibboleth" "https://github.com/nginx-shib/nginx-http-shibboleth.git" "v2.0.1"
 _build_dynamic_module_git "authldap" "https://github.com/jcu-eresearch/nginx-auth-ldap.git"
