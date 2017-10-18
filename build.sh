@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if [ -z "$_NGINX_VERSION" ]; then
-  _NGINX_VERSION='1.12.1'
+  _NGINX_VERSION='1.12.2'
 fi
 
 OUTPUT_DIR=~/nginx-packages
@@ -31,7 +31,7 @@ _build_dynamic_module_git() {
     pushd "$module_src" && git checkout "$module_version" && popd
 
     # Build dynamic module
-    "$build_scripts_dir/build_module.sh" -v "$_NGINX_VERSION" --nickname "$nickname" "$module_src"
+    "$build_scripts_dir/build_module.sh" --non-interactive -v "$_NGINX_VERSION" --nickname "$nickname" "$module_src"
 
     # Copy built packages
     mkdir -p "$OUTPUT_DIR"
