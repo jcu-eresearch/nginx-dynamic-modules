@@ -86,3 +86,11 @@ appropriate OS, install the built packages and test away::
 Unless you're just performing basic tests without hitting nginx, you'll need
 to map ports, which is what the ``-p`` flag is doing, mapping your host port
 ``8080`` to ``80`` inside the container.
+
+Updating Docker images
+----------------------
+
+To update the Docker images to the latest versions, do the following::
+
+    docker pull centos:7 && docker pull centos:6
+    docker-compose up --build  # or docker-compose build
