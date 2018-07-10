@@ -4,6 +4,7 @@ Changes
 1.0.0 (unreleased)
 ------------------
 
+* Bump versions of nginx and modules
 * Use upstream ``pkg-oss`` compared to trying to maintain our own version.  We
   now live-patch the build scripts to use Mercurial HTTPS protocols instead of
   insecure HTTP.
