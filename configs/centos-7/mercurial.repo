@@ -1,0 +1,7 @@
+[mercurial.selenic.com]
+name=mercurial.selenic.com
+baseurl=https://www.mercurial-scm.org/release/centos$releasever
+enabled=1
+# Temporary until we get a serious signing scheme in place,
+# check https://www.mercurial-scm.org/wiki/Download again
+gpgcheck=0

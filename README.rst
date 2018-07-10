@@ -5,9 +5,8 @@ nginx Dynamic Module Packaging
    :target: https://travis-ci.org/jcu-eresearch/nginx-dynamic-modules
 
 This creates packages for a variety of dynamic modules for nginx using the
-`nginx-pkg-oss <https://github.com/jcu-eresearch/nginx-pkg-oss>`_ tooling, which
-itself is a lightly modified fork of the original tooling of ``pkg-oss`` from
-nginx's core team.
+official nginx `pkg-oss <https://hg.nginx.org/pkg-oss>`_ tooling for building
+modules.
 
 We currently support the following OSes:
 
@@ -69,10 +68,10 @@ Note that versions may be slightly out-of-date as we update the code base.
 
 It is also possible to select a specific version of nginx to build against by
 setting the environment variable `_NGINX_VERSION` (such as
-``export _NGINX_VERSION=1.13.3``), which is used within the build script.
+``export _NGINX_VERSION=1.99.9``), which is used within the build script.
 From Docker Compose, you can use the following::
 
-    docker-compose run -e _NGINX_VERSION=1.13.3 nginx-dynamic-modules-centos-7
+    docker-compose run -e _NGINX_VERSION=1.99.9 nginx-dynamic-modules-centos-7
 
 Testing locally
 ---------------
@@ -84,7 +83,7 @@ appropriate OS, install the built packages and test away::
     yum install /app/build/centos-7/RPMS/x86_64/*.rpm
 
 Unless you're just performing basic tests without hitting nginx, you'll need
-to map ports, which is what the ``-p`` flag is doing, mapping your host port
+to map ports, which is what the ``-p`` flag is doing; mapping your host port
 ``8080`` to ``80`` inside the container.
 
 Updating Docker images

@@ -1,3 +1,0 @@
-[submodule "pkg-oss"]
-	path = nginx-pkg-oss
-	url = https://github.com/jcu-eresearch/nginx-pkg-oss.git

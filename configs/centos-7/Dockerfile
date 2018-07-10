@@ -4,19 +4,26 @@ MAINTAINER "JCU eResearch Centre" <eresearch.nospam@jcu.edu.au>
 # Add official nginx repo
 COPY nginx.repo /etc/yum.repos.d/
 
+# Add official Mercurial repo; we need SNI which is in Mercurial v3.3
+COPY mercurial.repo /etc/yum.repos.d/
+
 # Add JCU eResearch repo
 ADD https://www.hpc.jcu.edu.au/repos/jcu_eresearch/centos-7/eresearch.repo /etc/yum.repos.d/eresearch.repo
 
 # Install required packages for building with nginx pkg-oss
-# git is needed to clone our tools, and sudo/wget are undefined dependencies
-# sregex-devel is needed for replace-filter-nginx-module
+# mercurial is needed to get pkg-oss; sudo/wget are undefined dependencies
+# patch is needed to make pkg-oss use HTTPS
+# git is needed to clone our nginx modules
 # openldap-devel is for the nginx LDAP module
+# sregex-devel is needed for replace-filter-nginx-module
 RUN yum install -y \
+  mercurial \
+  sudo \
+  wget \
+  patch \
   git \
   openldap-devel \
-  sregex-devel \
-  sudo \
-  wget
+  sregex-devel
 
 # Make the build area available
 RUN mkdir -p /app/build
