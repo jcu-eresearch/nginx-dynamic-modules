@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 
 if [ -z "$_NGINX_VERSION" ]; then
   _NGINX_VERSION='1.14.0'
