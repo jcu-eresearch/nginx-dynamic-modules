@@ -94,3 +94,27 @@ Updating Docker images
 To update the Docker images to the latest versions, do the following::
 
     make build
+
+Updating for future Nginx versions
+----------------------------------
+
+#. Edit Nginx versions within `build.sh` and `.travis.yml` to match the latest
+   versions.  In the build script, we use Nginx stable by default and for
+   Travis, we test on CI for both stable and mainline.
+
+#. Rebuild and test the results::
+
+       make rebuild
+
+#. Many types of failures can occur at this point.  Some of the most common
+   are:
+
+   * ``pkg-oss`` not updated (yet) with files for this Nginx version: be
+     patient and check back later.
+   * Specific module fails to build and/or is no longer compatible with this
+     Nginx version: look for module updates or report issues to the respective
+     maintainers.
+   * ``pkg-oss`` build process has changed: review changes in ``pkg-oss`` and
+     update ``build.sh`` to match.
+   * ``build_module.sh`` patch for ``pkg-oss`` is no longer applying: create a
+     new patch for forcing ``pkg-oss`` to use HTTPS to download and build.

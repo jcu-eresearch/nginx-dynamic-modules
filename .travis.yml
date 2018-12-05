@@ -17,6 +17,6 @@ before_install:
   - chmod +x docker-compose
   - sudo mv docker-compose /usr/local/bin
 script:
-  - make ci
+  - make rebuild
 after_script:
   - ls -R build/
