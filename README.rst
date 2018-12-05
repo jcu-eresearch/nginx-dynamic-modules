@@ -50,7 +50,7 @@ Building packages
 
        git clone https://github.com/jcu-eresearch/nginx-dynamic-modules.git
        cd nginx-dynamic-modules
-       docker-compose up
+       make
 
 #. Enjoy your new RPMs, available in the `build/` directory.
 
@@ -79,7 +79,9 @@ Testing locally
 If you want to test the modules, then launch a Docker container with the
 appropriate OS, install the built packages and test away::
 
-    docker-compose run -p "8080:80" centos-7 bash
+    make test
+
+    # Inside the resultant container...
     yum install /app/build/centos-7/RPMS/x86_64/*.rpm
 
 Unless you're just performing basic tests without hitting nginx, you'll need
@@ -91,5 +93,4 @@ Updating Docker images
 
 To update the Docker images to the latest versions, do the following::
 
-    docker pull centos:7 && docker pull centos:6
-    docker-compose up --build  # or docker-compose build
+    make build
