@@ -1,7 +1,7 @@
 env:
   # Don't use `NGINX` as the variable name or Nginx won't daemonise
-  - _NGINX_VERSION=1.15.6
-  - _NGINX_VERSION=1.14.1
+  - _NGINX_VERSION=1.15.7
+  - _NGINX_VERSION=1.14.2
 sudo: required
 services:
   - docker
