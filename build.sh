@@ -13,18 +13,18 @@ temp_dir=$(mktemp -d)
 build_scripts_dir="$temp_dir/pkg-oss"
 hg clone https://hg.nginx.org/pkg-oss "$build_scripts_dir"
 
+# Patch pkg-oss to use HTTPS during initial build_module.sh run
+find "$build_scripts_dir" -type f -not -path "./.hg/*" -exec sed -E -i 's!http://(.*nginx.org)!https://\1!g' {} +
+
 # Patch pkg-oss to use HTTPS after it downloads itself later
 patch "$build_scripts_dir/build_module.sh" << EOF
 --- build_module.sh
 +++ build_module.sh
 @@ -321,2 +321,3 @@
- 	hg clone \$MERCURIAL_TAG http://hg.nginx.org/pkg-oss
+ 	hg clone \$MERCURIAL_TAG https://hg.nginx.org/pkg-oss
 +	find pkg-oss/ -type f -not -path "./.hg/*" -exec sed -E -i 's!http://(.*nginx.org)!https://\1!g' {} +
  	cd pkg-oss/\$PACKAGING_DIR
 EOF
-
-# Patch pkg-oss to use HTTPS during initial build_module.sh run
-find "$build_scripts_dir" -type f -not -path "./.hg/*" -exec sed -E -i 's!http://(.*nginx.org)!https://\1!g' {} +
 
 _build_dynamic_module_git() {
     nickname="$1"

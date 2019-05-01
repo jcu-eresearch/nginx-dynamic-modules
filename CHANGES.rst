@@ -4,7 +4,9 @@ Changes
 1.0.0 (unreleased)
 ------------------
 
-* Error out of `build.sh` immediately if any command fails
+* Reorder patching of build commands to ensure HTTPS gets used on Nginx
+  downloads and so on
+* Error out of ``build.sh`` immediately if any command fails
 * Bump versions of nginx and modules
 * Use upstream ``pkg-oss`` compared to trying to maintain our own version.  We
   now live-patch the build scripts to use Mercurial HTTPS protocols instead of
