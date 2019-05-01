@@ -77,11 +77,12 @@ Testing locally
 ---------------
 
 If you want to test the modules, then launch a Docker container with the
-appropriate OS, install the built packages and test away::
+appropriate OS, install the built packages and test away by running::
 
     make test
 
-    # Inside the resultant container...
+Then, inside the resulting container, run::
+
     yum install /app/build/centos-7/RPMS/x86_64/*.rpm
 
 Unless you're just performing basic tests without hitting nginx, you'll need
