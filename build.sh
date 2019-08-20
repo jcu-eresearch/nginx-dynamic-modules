@@ -4,7 +4,7 @@ set -e
 # pkg-oss defaults to using Nginx mainline if no version is specified, so
 # this version is manually kept in lock-step with stable
 if [ -z "$_NGINX_VERSION" ]; then
-  _NGINX_VERSION='1.16.0'
+  _NGINX_VERSION='1.16.1'
 fi
 
 OUTPUT_DIR=~/nginx-packages
