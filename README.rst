@@ -76,18 +76,21 @@ From Docker Compose, you can use the following::
 Testing locally
 ---------------
 
-If you want to test the modules, then launch a Docker container with the
-appropriate OS, install the built packages and test away by running::
+If you want to test the modules, you can do so by launching a Docker container
+with the appropriate OS, installing the built packages and testing. To do so::
 
+    make
     make test
 
-Then, inside the resulting container, run::
+The latter command will launch you into the Docker container. Now, inside this
+running container, call::
 
     yum install /app/build/centos-7/RPMS/x86_64/*.rpm
 
 Unless you're just performing basic tests without hitting nginx, you'll need
-to map ports, which is what the ``-p`` flag is doing; mapping your host port
-``8080`` to ``80`` inside the container.
+to map ports. The ``Makefile`` is providing the ``-p`` flag to
+``docker-compose`` which maps your host port ``8080`` to ``80`` inside the
+container.
 
 Updating Docker images
 ----------------------
