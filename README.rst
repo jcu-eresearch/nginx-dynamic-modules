@@ -95,10 +95,20 @@ running container, call::
 
     yum install /app/build/centos-7/RPMS/x86_64/*.rpm
 
+To run a basic smoke test with all current modules, call nginx like so::
+
+    nginx -t -c /app/configs/nginx-test.conf
+
 Unless you're just performing basic tests without hitting nginx, you'll need
 to map ports. The ``Makefile`` is providing the ``-p`` flag to
 ``docker-compose`` which maps your host port ``8080`` to ``80`` inside the
-container.
+container. This menas you can launch nginx with the following command and
+access it from your host on ``localhost:8080`` to perform further tests::
+
+    nginx -c /app/configs/nginx-test.conf
+
+Note that nginx will daemonise by default.
+
 
 Updating Docker images
 ----------------------
