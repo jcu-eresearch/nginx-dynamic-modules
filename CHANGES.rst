@@ -4,6 +4,7 @@ Changes
 1.0.0 (unreleased)
 ------------------
 
+* Update CentOS 6 build with new IUS URL
 * Reorder patching of build commands to ensure HTTPS gets used on Nginx
   downloads and so on
 * Error out of ``build.sh`` immediately if any command fails

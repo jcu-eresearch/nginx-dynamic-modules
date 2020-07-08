@@ -9,7 +9,7 @@ ADD https://www.hpc.jcu.edu.au/repos/jcu_eresearch/centos-6/eresearch.repo /etc/
 
 # Install SNI-supporting Mercurial from source
 RUN yum install -y epel-release && \
-  rpm -ivh https://centos6.iuscommunity.org/ius-release.rpm && \
+  rpm -ivh https://repo.ius.io/ius-release-el6.rpm && \
   yum install -y gcc python27 python27-devel && \
   curl -O https://www.mercurial-scm.org/release/mercurial-4.6.2.tar.gz && \
   tar xf mercurial-4.6.2.tar.gz && \
