@@ -35,6 +35,9 @@ _build_dynamic_module_git() {
     # Preempt deletion of build directory
     rm -rf ~/rpmbuild
 
+    # Ensure we always start in a valid cwd
+    cd "$temp_dir"
+
     # Checkout specific version
     #   git clone -b [tag] isn't supported on git 1.7 (RHEL 6)
     git clone "$module_url" "$module_src"
