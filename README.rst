@@ -20,10 +20,10 @@ https://github.com/jcu-eresearch/nginx-custom-build.
 Todo
 ----
 
-* Switch nginx_ajp_module to mainline now that
-  https://github.com/yaoweibin/nginx_ajp_module/pull/45 was merged
 * Switch nginx_auth_ldap to mainline when/if
   https://github.com/kvspb/nginx-auth-ldap/pull/234 is merged
+* Switch replace-filter-nginx-module when
+  https://github.com/openresty/replace-filter-nginx-module/pull/28 is merged
 
 Modules
 -------
