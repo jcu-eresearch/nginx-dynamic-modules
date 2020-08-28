@@ -63,6 +63,9 @@ Building packages
 
 #. Enjoy your new RPMs, available in the ``build/`` directory.
 
+#. Push to repository hosting and update the
+   `shared-salt-states <https://github.com/jcu-eresearch/shared-salt-states/edit/master/nginx/init.sls>`_ version details.
+
 If you're not into Docker, then you can manually run
 https://github.com/jcu-eresearch/nginx-dynamic-modules/blob/master/build.sh
 on your own EL machine, ensuring that you set up your build environment
@@ -114,7 +117,7 @@ Note that nginx will daemonise by default.
 Updating Docker images
 ----------------------
 
-To update the Docker images to the latest versions, do the following::
+To update the Docker images themselves to their latest versions, do the following::
 
     make build
 
