@@ -10,8 +10,9 @@ modules.
 
 We currently support the following OSes:
 
-* CentOS/RHEL 6 (x86_64)
+* CentOS/RHEL 8 (x86_64)
 * CentOS/RHEL 7 (x86_64)
+* CentOS/RHEL 6 (x86_64)
 
 This set of modules was originally based on the customised nginx build from
 https://github.com/jcu-eresearch/nginx-custom-build.
@@ -35,7 +36,7 @@ ngx-fancyindex
     Directory listings that are more visually appealing and customisable.
 
 nginx-http-shibbolth
-    Shibboleth authentication support for applications; effectively `mod_shib`
+    Shibboleth authentication support for applications; effectively ``mod_shib``
     for nginx.
 
 nginx-auth-ldap
@@ -60,7 +61,7 @@ Building packages
        cd nginx-dynamic-modules
        make
 
-#. Enjoy your new RPMs, available in the `build/` directory.
+#. Enjoy your new RPMs, available in the ``build/`` directory.
 
 If you're not into Docker, then you can manually run
 https://github.com/jcu-eresearch/nginx-dynamic-modules/blob/master/build.sh
@@ -75,7 +76,7 @@ and **mainline** versions of nginx and will build for all OSes by default.
 Note that versions may be slightly out-of-date as we update the code base.
 
 It is also possible to select a specific version of nginx to build against by
-setting the environment variable `_NGINX_VERSION` (such as
+setting the environment variable ``_NGINX_VERSION`` (such as
 ``export _NGINX_VERSION=1.99.9``), which is used within the build script.
 From Docker Compose, you can use the following::
 
@@ -93,7 +94,7 @@ with the appropriate OS, installing the built packages and testing. To do so::
 The latter command will launch you into the Docker container. Now, inside this
 running container, call::
 
-    yum install /app/build/centos-7/RPMS/x86_64/*.rpm
+    dnf install /app/build/centos-8/RPMS/x86_64/*.rpm
 
 To run a basic smoke test with all current modules, call nginx like so::
 
@@ -120,7 +121,7 @@ To update the Docker images to the latest versions, do the following::
 Updating for future Nginx versions
 ----------------------------------
 
-#. Edit Nginx versions within `build.sh` and `.travis.yml` to match the latest
+#. Edit Nginx versions within ``build.sh`` and ``.travis.yml`` to match the latest
    versions.  In the build script, we use Nginx stable by default and for
    Travis, we test on CI for both stable and mainline.
 

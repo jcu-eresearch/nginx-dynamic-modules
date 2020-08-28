@@ -4,6 +4,7 @@ Changes
 1.0.0 (unreleased)
 ------------------
 
+* Add support for EL 8
 * Update CentOS 6 build with new IUS URL
 * Reorder patching of build commands to ensure HTTPS gets used on Nginx
   downloads and so on

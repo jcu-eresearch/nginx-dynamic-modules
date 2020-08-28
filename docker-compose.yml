@@ -1,10 +1,14 @@
 version: '2'
 services:
-  centos-6:
-    build: configs/centos-6/
+  centos-8:
+    build: configs/centos-8/
     volumes:
       - .:/app
   centos-7:
     build: configs/centos-7/
+    volumes:
+      - .:/app
+  centos-6:
+    build: configs/centos-6/
     volumes:
       - .:/app
