@@ -7,14 +7,8 @@ COPY nginx.repo /etc/yum.repos.d/
 # Add JCU eResearch repo
 ADD https://www.hpc.jcu.edu.au/repos/jcu_eresearch/centos-6/eresearch.repo /etc/yum.repos.d/eresearch.repo
 
-# Install SNI-supporting Mercurial from source
-RUN yum install -y epel-release && \
-  rpm -ivh https://repo.ius.io/ius-release-el6.rpm && \
-  yum install -y gcc python27 python27-devel && \
-  curl -O https://www.mercurial-scm.org/release/mercurial-4.6.2.tar.gz && \
-  tar xf mercurial-4.6.2.tar.gz && \
-  cd mercurial-4.6.2 && \
-  PYTHONPATH=/usr/lib64/python2.7 make install-bin PYTHON=python2.7 PREFIX=/usr
+# Install SNI-supporting Mercurial
+RUN yum install -y https://www.mercurial-scm.org/release/centos6/mercurial-5.5-1+2.7.16.x86_64.rpm
 
 # Install required packages for building with nginx pkg-oss
 # patch is needed to make pkg-oss use HTTPS
