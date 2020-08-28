@@ -14,6 +14,7 @@ ADD https://www.hpc.jcu.edu.au/repos/jcu_eresearch/centos-7/eresearch.repo /etc/
 # mercurial is needed to get pkg-oss; sudo/wget are undefined dependencies
 # patch is needed to make pkg-oss use HTTPS
 # git is needed to clone our nginx modules
+# rsync is needed to copy packages out
 # openldap-devel is for the nginx LDAP module
 # sregex-devel is needed for replace-filter-nginx-module
 RUN yum install -y \
@@ -22,6 +23,7 @@ RUN yum install -y \
   wget \
   patch \
   git \
+  rsync \
   openldap-devel \
   sregex-devel
 

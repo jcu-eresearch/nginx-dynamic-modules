@@ -13,6 +13,7 @@ RUN yum install -y https://www.mercurial-scm.org/release/centos6/mercurial-5.5-1
 # Install required packages for building with nginx pkg-oss
 # patch is needed to make pkg-oss use HTTPS
 # git is needed to clone our nginx modules
+# rsync is needed to copy packages out
 # openldap-devel is for the nginx LDAP module
 # sregex-devel is needed for replace-filter-nginx-module
 RUN yum install -y \
@@ -20,6 +21,7 @@ RUN yum install -y \
   wget \
   patch \
   git \
+  rsync \
   openldap-devel \
   sregex-devel
 
