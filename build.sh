@@ -60,7 +60,7 @@ _build_dynamic_module_git "fancyindex" "https://github.com/aperezdc/ngx-fancyind
 _build_dynamic_module_git "ajp" "https://github.com/yaoweibin/nginx_ajp_module.git" "a964a0bcc6a9f2bfb82a13752d7794a36319ffac"
 _build_dynamic_module_git "shibboleth" "https://github.com/nginx-shib/nginx-http-shibboleth.git" "v2.0.1"
 _build_dynamic_module_git "authldap" "https://github.com/kvspb/nginx-auth-ldap.git" "83c059b73566c2ee9cbda920d91b66657cf120b7"
-_build_dynamic_module_git "replacefilter" "https://github.com/jcu-eresearch/replace-filter-nginx-module.git"
+_build_dynamic_module_git "replacefilter" "https://github.com/openresty/replace-filter-nginx-module.git" "e0257b2d2a0b380f8645a6e68655dd77c19a3f69"
 
 echo "Done! Module packages saved to $OUTPUT_DIR."
 rm -rf "$temp_dir"

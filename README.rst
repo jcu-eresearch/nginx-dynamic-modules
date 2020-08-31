@@ -17,12 +17,6 @@ We currently support the following OSes:
 This set of modules was originally based on the customised nginx build from
 https://github.com/jcu-eresearch/nginx-custom-build.
 
-Todo
-----
-
-* Switch replace-filter-nginx-module when
-  https://github.com/openresty/replace-filter-nginx-module/pull/28 is merged
-
 Modules
 -------
 
