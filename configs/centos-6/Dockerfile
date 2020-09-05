@@ -7,21 +7,22 @@ COPY nginx.repo /etc/yum.repos.d/
 # Add JCU eResearch repo
 ADD https://www.hpc.jcu.edu.au/repos/jcu_eresearch/centos-6/eresearch.repo /etc/yum.repos.d/eresearch.repo
 
-# Install SNI-supporting Mercurial
-RUN yum install -y https://www.mercurial-scm.org/release/centos6/mercurial-5.5-1+2.7.16.x86_64.rpm
-
 # Install required packages for building with nginx pkg-oss
-# patch is needed to make pkg-oss use HTTPS
-# git is needed to clone our nginx modules
-# rsync is needed to copy packages out
-# openldap-devel is for the nginx LDAP module
-# sregex-devel is needed for replace-filter-nginx-module
+# patch          - to make pkg-oss use HTTPS
+# git            - to clone our nginx modules
+# rsync          - to copy packages out
+# mercurial      - required to run pkg-oss (SNI support required)
+# sudo           - required to run pkg-oss
+# wget           - required to run pkg-oss
+# openldap-devel - for building nginx LDAP module
+# sregex-devel   - for building replace-filter-nginx-module
 RUN yum install -y \
-  sudo \
-  wget \
   patch \
   git \
   rsync \
+  https://www.mercurial-scm.org/release/centos6/mercurial-5.5-1+2.7.16.x86_64.rpm \
+  sudo \
+  wget \
   openldap-devel \
   sregex-devel
 
