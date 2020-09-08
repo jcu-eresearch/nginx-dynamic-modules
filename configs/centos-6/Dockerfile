@@ -38,4 +38,5 @@ EXPOSE 80 443
 CMD /app/build.sh && \
   yum install -y ~/nginx-packages/RPMS/x86_64/nginx-module-*.rpm && \
   nginx -t -c /app/configs/nginx-test.conf && \
+  mkdir -p /app/build/centos-6/ && \
   rsync --no-relative -vahu ~/nginx-packages/RPMS ~/nginx-packages/SRPMS /app/build/centos-6
