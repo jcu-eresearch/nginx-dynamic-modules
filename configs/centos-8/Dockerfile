@@ -8,6 +8,7 @@ COPY nginx.repo /etc/yum.repos.d/
 ADD https://www.hpc.jcu.edu.au/repos/jcu_eresearch/centos-8/eresearch.repo /etc/yum.repos.d/eresearch.repo
 
 # Install required packages for building with nginx pkg-oss
+# patch          - to make pkg-oss use HTTPS
 # git            - to clone our nginx modules
 # rsync          - to copy packages out
 # mercurial      - required to run pkg-oss (SNI support required)
@@ -15,6 +16,7 @@ ADD https://www.hpc.jcu.edu.au/repos/jcu_eresearch/centos-8/eresearch.repo /etc/
 # openldap-devel - for building nginx LDAP module
 # sregex-devel   - for building replace-filter-nginx-module
 RUN yum install -y \
+  patch \
   git \
   rsync \
   mercurial \
