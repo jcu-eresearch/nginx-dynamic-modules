@@ -8,6 +8,8 @@ if [ -z "$_NGINX_VERSION" ]; then
 fi
 
 OUTPUT_DIR=~/nginx-packages
+mkdir -p "$OUTPUT_DIR"
+
 temp_dir=$(mktemp -d)
 
 build_scripts_dir="$temp_dir/pkg-oss"
@@ -32,9 +34,6 @@ _build_dynamic_module_git() {
     module_version="$3"
     module_src="$temp_dir/$nickname"
 
-    # Preempt deletion of build directory
-    rm -rf ~/rpmbuild
-
     # Ensure we always start in a valid cwd
     cd "$temp_dir"
 
@@ -44,11 +43,7 @@ _build_dynamic_module_git() {
     pushd "$module_src" && git checkout "$module_version" && popd
 
     # Build dynamic module
-    "$build_scripts_dir/build_module.sh" --non-interactive -v "$_NGINX_VERSION" --nickname "$nickname" "$module_src"
-
-    # Copy built packages
-    mkdir -p "$OUTPUT_DIR"
-    cp -R ~/rpmbuild/{RPMS,SRPMS} "$OUTPUT_DIR"
+    "$build_scripts_dir/build_module.sh" --non-interactive -o "$OUTPUT_DIR" -v "$_NGINX_VERSION" --nickname "$nickname" "$module_src"
 
     # Cleanup
     rm -rf "$module_src"

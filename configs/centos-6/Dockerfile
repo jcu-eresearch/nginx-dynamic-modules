@@ -8,6 +8,7 @@ COPY nginx.repo /etc/yum.repos.d/
 ADD https://www.hpc.jcu.edu.au/repos/jcu_eresearch/centos-6/eresearch.repo /etc/yum.repos.d/eresearch.repo
 
 # Install required packages for building with nginx pkg-oss
+# realpath       - for output path discovery in pkg-oss build.sh
 # patch          - to make pkg-oss use HTTPS
 # git            - to clone our nginx modules
 # rsync          - to copy packages out
@@ -16,6 +17,7 @@ ADD https://www.hpc.jcu.edu.au/repos/jcu_eresearch/centos-6/eresearch.repo /etc/
 # wget           - required to run pkg-oss
 # openldap-devel - for building nginx LDAP module
 # sregex-devel   - for building replace-filter-nginx-module
+ADD realpath /usr/bin/realpath
 RUN yum install -y \
   patch \
   git \
@@ -36,7 +38,7 @@ EXPOSE 80 443
 # 2. Test
 # 3. Copy the RPMs back to the host volume
 CMD /app/build.sh && \
-  yum install -y ~/nginx-packages/RPMS/x86_64/nginx-module-*.rpm && \
+  yum install -y ~/nginx-packages/nginx-module-*.rpm && \
   nginx -t -c /app/configs/nginx-test.conf && \
   mkdir -p /app/build/centos-6/ && \
-  rsync --no-relative -vahu ~/nginx-packages/RPMS ~/nginx-packages/SRPMS /app/build/centos-6
+  rsync --no-relative -vahu ~/nginx-packages/ /app/build/centos-6
