@@ -9,7 +9,6 @@ ADD https://www.hpc.jcu.edu.au/repos/jcu_eresearch/centos-6/eresearch.repo /etc/
 
 # Install required packages for building with nginx pkg-oss
 # realpath       - for output path discovery in pkg-oss build.sh
-# patch          - to make pkg-oss use HTTPS
 # git            - to clone our nginx modules
 # rsync          - to copy packages out
 # mercurial      - required to run pkg-oss (SNI support required)
@@ -19,7 +18,6 @@ ADD https://www.hpc.jcu.edu.au/repos/jcu_eresearch/centos-6/eresearch.repo /etc/
 # sregex-devel   - for building replace-filter-nginx-module
 ADD realpath /usr/bin/realpath
 RUN yum install -y \
-  patch \
   git \
   rsync \
   https://www.mercurial-scm.org/release/centos6/mercurial-5.5-1+2.7.16.x86_64.rpm \
