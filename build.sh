@@ -2,9 +2,12 @@
 set -e
 
 # pkg-oss defaults to using Nginx mainline if no version is specified, so
-# this version is manually kept in lock-step with stable
+# these versions are manually kept in lock-step with stable
 if [ -z "$_NGINX_VERSION" ]; then
-  _NGINX_VERSION='1.18.0'
+  _NGINX_VERSION=1.18.0
+fi
+if [ -z "$_NGINX_MODULE_RELEASE" ]; then
+  _NGINX_MODULE_RELEASE=2
 fi
 
 OUTPUT_DIR=~/nginx-packages
@@ -27,6 +30,18 @@ patch "$build_scripts_dir/build_module.sh" << EOF
 +	find pkg-oss/ -type f -not -path "./.hg/*" -exec sed -E -i 's!http://(.*nginx.org)!https://\1!g' {} +
  	cd pkg-oss/\$PACKAGING_DIR
 EOF
+
+# Patch pkg-oss to support MODULE_RELEASE versions
+patch "$build_scripts_dir/build_module.sh" << EOF
+--- a/build_module.sh
++++ b/build_module.sh
+@@ -413,3 +413,3 @@
+ MODULE_VERSION_\$MODULE_NAME=		\$VERSION
+-MODULE_RELEASE_\$MODULE_NAME=		1
++MODULE_RELEASE_\$MODULE_NAME=		$_NGINX_MODULE_RELEASE
+ MODULE_CONFARGS_\$MODULE_NAME=		--add-dynamic-module=\\\$(MODSRC_PREFIX)\$MODULE_NAME-\$VERSION
+EOF
+#+MODULE_RELEASE_\$MODULE_NAME=           $_NGINX_MODULE_RELEASE
 
 _build_dynamic_module_git() {
     nickname="$1"

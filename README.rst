@@ -77,6 +77,11 @@ From Docker Compose, you can use the following::
 
     docker-compose run -e _NGINX_VERSION=1.99.9 nginx-dynamic-modules-centos-7
 
+``_NGINX_MODULE_RELEASE_VERSION`` can also be set as well, representing the
+build version of the modules. By convention, this will follow the release
+version of packaged nginx versions but can be set separately to handle
+situations where multiple releases of a module are required.
+
 Testing locally
 ---------------
 
