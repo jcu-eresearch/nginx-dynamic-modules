@@ -1,7 +1,7 @@
 env:
   # Don't use `NGINX` as the variable name or Nginx won't daemonise
   # Mainline
-  - _NGINX_VERSION=1.19.7 _NGINX_MODULE_RELEASE=VERSION=1
+  - _NGINX_VERSION=1.19.8 _NGINX_MODULE_RELEASE=VERSION=1
   # Stable
   - _NGINX_VERSION=1.18.0 _NGINX_MODULE_RELEASE_VERSION=2
 sudo: required
