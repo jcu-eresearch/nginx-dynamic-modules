@@ -6,9 +6,6 @@ set -e
 if [ -z "$_NGINX_VERSION" ]; then
   _NGINX_VERSION=1.20.0
 fi
-if [ -z "$_NGINX_MODULE_RELEASE" ]; then
-  _NGINX_MODULE_RELEASE=1
-fi
 
 OUTPUT_DIR=~/nginx-packages
 mkdir -p "$OUTPUT_DIR"
@@ -31,22 +28,11 @@ patch "$build_scripts_dir/build_module.sh" << EOF
  	cd pkg-oss/\$PACKAGING_DIR
 EOF
 
-# Patch pkg-oss to support MODULE_RELEASE versions
-patch "$build_scripts_dir/build_module.sh" << EOF
---- a/build_module.sh
-+++ b/build_module.sh
-@@ -413,3 +413,3 @@
- MODULE_VERSION_\$MODULE_NAME=		\$VERSION
--MODULE_RELEASE_\$MODULE_NAME=		1
-+MODULE_RELEASE_\$MODULE_NAME=		$_NGINX_MODULE_RELEASE
- MODULE_CONFARGS_\$MODULE_NAME=		--add-dynamic-module=\\\$(MODSRC_PREFIX)\$MODULE_NAME-\$VERSION
-EOF
-#+MODULE_RELEASE_\$MODULE_NAME=           $_NGINX_MODULE_RELEASE
-
 _build_dynamic_module_git() {
     nickname="$1"
-    module_url="$2"
-    module_version="$3"
+    module_git_url="$2"
+    module_git_rev="$3"
+    module_release_version="$4"
     module_src="$temp_dir/$nickname"
 
     # Ensure we always start in a valid cwd
@@ -54,23 +40,29 @@ _build_dynamic_module_git() {
 
     # Checkout specific version
     #   git clone -b [tag] isn't supported on git 1.7 (RHEL 6)
-    git clone "$module_url" "$module_src"
-    pushd "$module_src" && git checkout "$module_version" && popd
+    git clone "$module_git_url" "$module_src"
+    pushd "$module_src" && git checkout "$module_git_rev" && popd
 
     # Build dynamic module
-    "$build_scripts_dir/build_module.sh" --non-interactive -o "$OUTPUT_DIR" -v "$_NGINX_VERSION" --nickname "$nickname" "$module_src"
+    "$build_scripts_dir/build_module.sh" \
+        --non-interactive \
+        --nickname "$nickname" \
+        --module-version "$module_release_version" \
+        -v "$_NGINX_VERSION" \
+        -o "$OUTPUT_DIR" \
+        "$module_src"
 
     # Cleanup
     rm -rf "$module_src"
 }
 
 # Build various add-on modules for nginx
-_build_dynamic_module_git "headersmore" "https://github.com/openresty/headers-more-nginx-module" "v0.33"
-_build_dynamic_module_git "fancyindex" "https://github.com/aperezdc/ngx-fancyindex.git" "v0.5.1"
-_build_dynamic_module_git "ajp" "https://github.com/yaoweibin/nginx_ajp_module.git" "a964a0bcc6a9f2bfb82a13752d7794a36319ffac"
-_build_dynamic_module_git "shibboleth" "https://github.com/nginx-shib/nginx-http-shibboleth.git" "v2.0.1"
-_build_dynamic_module_git "authldap" "https://github.com/jcu-eresearch/nginx-auth-ldap.git"
-_build_dynamic_module_git "replacefilter" "https://github.com/openresty/replace-filter-nginx-module.git" "e0257b2d2a0b380f8645a6e68655dd77c19a3f69"
+_build_dynamic_module_git "headersmore" "https://github.com/openresty/headers-more-nginx-module" "v0.33" "0.33-1"
+_build_dynamic_module_git "fancyindex" "https://github.com/aperezdc/ngx-fancyindex.git" "v0.5.1" "0.5.1-1"
+_build_dynamic_module_git "ajp" "https://github.com/yaoweibin/nginx_ajp_module.git" "a964a0bcc6a9f2bfb82a13752d7794a36319ffac" "0.0.1-1"
+_build_dynamic_module_git "shibboleth" "https://github.com/nginx-shib/nginx-http-shibboleth.git" "v2.0.1" "2.0.1-1"
+_build_dynamic_module_git "authldap" "https://github.com/jcu-eresearch/nginx-auth-ldap.git" "" "0.0.1-1"
+_build_dynamic_module_git "replacefilter" "https://github.com/openresty/replace-filter-nginx-module.git" "e0257b2d2a0b380f8645a6e68655dd77c19a3f69" "0.0.1-1"
 
 echo "Done! Module packages saved to $OUTPUT_DIR."
 rm -rf "$temp_dir"
