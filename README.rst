@@ -12,7 +12,6 @@ We currently support the following OSes:
 
 * CentOS/RHEL 8 (x86_64)
 * CentOS/RHEL 7 (x86_64)
-* CentOS/RHEL 6 (x86_64)
 
 This set of modules was originally based on the customised nginx build from
 https://github.com/jcu-eresearch/nginx-custom-build.

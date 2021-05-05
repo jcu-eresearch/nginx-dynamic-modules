@@ -8,7 +8,3 @@ services:
     build: configs/centos-7/
     volumes:
       - .:/app
-  centos-6:
-    build: configs/centos-6/
-    volumes:
-      - .:/app
