@@ -34,6 +34,9 @@ nginx-http-shibbolth
 nginx-auth-ldap
     LDAP authentication with support for multiple servers.
 
+nginx_ajp_module
+    Updated for dynamic module compatibility.
+
 replace-filter-nginx-module
     ngx_replace_filter - Streaming regular expression replacement in response
     bodies.
