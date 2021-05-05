@@ -1,6 +1,9 @@
 FROM centos:6
 MAINTAINER "JCU eResearch Centre" <eresearch.nospam@jcu.edu.au>
 
+# Use archived CentOS repo URLs
+ADD CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo
+
 # Add official nginx repo
 COPY nginx.repo /etc/yum.repos.d/
 
@@ -14,6 +17,7 @@ ADD https://www.hpc.jcu.edu.au/repos/jcu_eresearch/centos-6/eresearch.repo /etc/
 # rsync          - to copy packages out
 # mercurial      - required to run pkg-oss (SNI support required)
 # sudo           - required to run pkg-oss
+# libxslt        - required to run pkg-oss (xsltproc)
 # wget           - required to run pkg-oss
 # openldap-devel - for building nginx LDAP module
 # sregex-devel   - for building replace-filter-nginx-module
@@ -25,6 +29,7 @@ RUN yum install -y \
   https://www.mercurial-scm.org/release/centos6/mercurial-5.5-1+2.7.16.x86_64.rpm \
   sudo \
   wget \
+  libxslt \
   openldap-devel \
   sregex-devel
 
