@@ -5,7 +5,7 @@ test:
 	docker-compose run -p "8080:80" centos-8 bash
 
 build:
-	docker pull centos:8 && docker pull centos:7 && docker pull centos:6
+	docker pull centos:8 && docker pull centos:7
 	docker-compose build
 
 rebuild:
