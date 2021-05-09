@@ -59,7 +59,7 @@ _build_dynamic_module_git() {
 _build_dynamic_module_git "headersmore" "https://github.com/openresty/headers-more-nginx-module" "v0.33" "0.33-1"
 _build_dynamic_module_git "fancyindex" "https://github.com/aperezdc/ngx-fancyindex.git" "v0.5.1" "0.5.1-1"
 _build_dynamic_module_git "shibboleth" "https://github.com/nginx-shib/nginx-http-shibboleth.git" "v2.0.1" "2.0.1-1"
-_build_dynamic_module_git "authldap" "https://github.com/jcu-eresearch/nginx-auth-ldap.git" "" "0.0.1-1"
+_build_dynamic_module_git "authldap" "https://github.com/jcu-eresearch/nginx-auth-ldap.git" "552a6a6d8378de72b072d5092c5fcf2af120eec3" "0.0.1-1"
 _build_dynamic_module_git "replacefilter" "https://github.com/openresty/replace-filter-nginx-module.git" "e0257b2d2a0b380f8645a6e68655dd77c19a3f69" "0.0.1-1"
 
 echo "Done! Module packages saved to $OUTPUT_DIR."
