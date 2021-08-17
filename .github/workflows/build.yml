@@ -21,7 +21,6 @@ jobs:
       - name: Build
         env:
           _NGINX_VERSION: ${{ matrix.nginx }}
-        run: echo $_NGINX_VERSION
-        #run: make ci
-      #- name: Check build artifacts
-      #  run: ls -R build/
+        run: make ci
+      - name: Check build artefacts
+        run: ls -R build/
