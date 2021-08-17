@@ -4,7 +4,11 @@ services:
     build: configs/centos-8/
     volumes:
       - .:/app
+    environment:
+      - _NGINX_VERSION
   centos-7:
     build: configs/centos-7/
     volumes:
       - .:/app
+    environment:
+      - _NGINX_VERSION

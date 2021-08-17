@@ -72,7 +72,8 @@ Note that versions may be slightly out-of-date as we update the code base.
 It is also possible to select a specific version of nginx to build against by
 setting the environment variable ``_NGINX_VERSION`` (such as
 ``export _NGINX_VERSION=1.99.9``), which is used within the build script.
-From Docker Compose, you can use the following::
+From Docker Compose, you can also use the following to set the version
+directly in the command::
 
     docker-compose run -e _NGINX_VERSION=1.99.9 nginx-dynamic-modules-centos-8
 
