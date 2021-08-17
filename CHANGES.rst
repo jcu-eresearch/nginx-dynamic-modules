@@ -4,6 +4,7 @@ Changes
 1.0.0 (unreleased)
 ------------------
 
+* Move to GitHub Actions from Travis
 * Remove support for CentOS 6 as Nginx has dropped packaging support
 * Add module release versioning support in line with what ``pkg-oss`` now
   allows with the ``--module-version`` argument in 0.18.

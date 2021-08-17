@@ -1,8 +1,8 @@
 nginx Dynamic Module Packaging
 ==============================
 
-.. image:: https://travis-ci.org/jcu-eresearch/nginx-dynamic-modules.svg?branch=master
-   :target: https://travis-ci.org/jcu-eresearch/nginx-dynamic-modules
+.. image:: https://github.com/jcu-eresearch/nginx-dynamic-modules/actions/workflows/build.yml/badge.svg
+   :target: https://github.com/jcu-eresearch/nginx-dynamic-modules/actions/workflows/build.yml
 
 This creates packages for a variety of dynamic modules for nginx using the
 official nginx `pkg-oss <https://hg.nginx.org/pkg-oss>`_ tooling for building
@@ -121,9 +121,9 @@ To update the Docker images themselves to their latest versions, do the followin
 Updating for future Nginx versions
 ----------------------------------
 
-#. Edit Nginx versions within ``build.sh`` and ``.travis.yml`` to match the latest
-   versions.  In the build script, we use Nginx stable by default and for
-   Travis, we test on CI for both stable and mainline.
+#. Edit Nginx versions within ``build.sh`` and ``.github/workflows/build.yml``
+   to match the latest versions.  In the build script, we use Nginx stable by
+   default and for CI we test both stable and mainline.
 
 #. Rebuild and test the results::
 
