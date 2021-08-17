@@ -10,10 +10,11 @@ jobs:
 
     strategy:
       matrix:
-        - release: mainline
-          nginx: "1.21.1"
-        - release: stable
-          nginx: "1.20.1"
+        include:
+          - release: mainline
+            nginx: "1.21.1"
+          - release: stable
+            nginx: "1.20.1"
 
     steps:
       - uses: actions/checkout@v2
