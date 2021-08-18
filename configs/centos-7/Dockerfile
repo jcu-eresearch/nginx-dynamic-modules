@@ -39,6 +39,7 @@ EXPOSE 80 443
 # 2. Test
 # 3. Copy the RPMs back to the host volume
 CMD /app/build.sh && \
+  /app/configs/switch-nginx-repo.sh && \
   yum install -y ~/nginx-packages/nginx-module-*.rpm && \
   nginx -t -c /app/configs/nginx-test.conf && \
   mkdir -p /app/build/centos-7 && \

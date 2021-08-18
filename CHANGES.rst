@@ -4,6 +4,8 @@ Changes
 1.0.0 (unreleased)
 ------------------
 
+* Correctly test mainline nginx via Docker. Previously, the environment
+  variables were never passed through.
 * Move to GitHub Actions from Travis
 * Remove support for CentOS 6 as Nginx has dropped packaging support
 * Add module release versioning support in line with what ``pkg-oss`` now

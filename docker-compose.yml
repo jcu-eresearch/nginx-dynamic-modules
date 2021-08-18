@@ -6,9 +6,11 @@ services:
       - .:/app
     environment:
       - _NGINX_VERSION
+      - _NGINX_RELEASE
   centos-7:
     build: configs/centos-7/
     volumes:
       - .:/app
     environment:
       - _NGINX_VERSION
+      - _NGINX_RELEASE
