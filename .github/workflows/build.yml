@@ -21,6 +21,7 @@ jobs:
       - name: Build
         env:
           _NGINX_VERSION: ${{ matrix.nginx }}
+          _NGINX_RELEASE: ${{ matrix.release }}
         run: make ci
       - name: Check build artefacts
         run: ls -R build/
