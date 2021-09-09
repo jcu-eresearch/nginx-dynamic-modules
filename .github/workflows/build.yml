@@ -12,7 +12,7 @@ jobs:
       matrix:
         include:
           - release: mainline
-            nginx: "1.21.2"
+            nginx: "1.21.3"
           - release: stable
             nginx: "1.20.1"
 
