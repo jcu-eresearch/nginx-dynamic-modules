@@ -12,9 +12,9 @@ jobs:
       matrix:
         include:
           - release: mainline
-            nginx: "1.21.3"
+            nginx: "1.21.6"
           - release: stable
-            nginx: "1.20.1"
+            nginx: "1.20.2"
 
     steps:
       - uses: actions/checkout@v2
